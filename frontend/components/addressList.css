@@ -1,0 +1,11 @@
+.address-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+li {
+    padding: 7px;
+}
+
+
