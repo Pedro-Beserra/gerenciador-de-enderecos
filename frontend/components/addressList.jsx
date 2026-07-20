@@ -1,24 +1,87 @@
 import React from 'react';
 import './addressList.css';
 
-export default function({ addresses, onEditClick, onDelete}) {
+export default function AddressList({ addresses, onEditClick, onDelete }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "20px",
+      }}
+    >
+      <h3>Meus Endereços</h3>
 
-    return ( 
-        <div className="address-list">
-            <h3>Meus Endereços</h3>
-            {addresses.length === 0 ? <p>Nenhum endereço encontrado.</p> : ( 
-                <ul>
-                    {addresses.map(address =>  (
-                        <li key={address.id}>
-                            <strong>Endereços</strong>: {`Pais: ${address.pais}`}, {`Estado: ${address.estado}`}, {`Cidade: ${address.cidade}`}, {`Bairro: ${address.bairro}`}, {`Rua: ${address.rua}`}, {`Número: ${address.numero}`}, {`CEP: ${address.cep}`}, {`Complemento: ${address.complemento}`}, {`Apelido: ${address.apelido}`}
-                            <br />
-                            <button onClick={() => onEditClick(address)}>Editar</button>
-                            <button onClick={() => onDelete(address.id)}>Deletar</button>
-                        </li>
-                    ))}
-                </ul>
+      {addresses.length === 0 ? (
+        <p>Nenhum endereço encontrado.</p>
+      ) : (
+        addresses.map((address) => (
+          <div
+            key={address.id}
+            style={{
+              width: "400px",
+              padding: "20px",
+              border: "1px solid #ccc",
+              borderRadius: "10px",
+              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+            }}
+          >
 
-                )}
-        </div>
-    );
+            <h4>{address.apelido || "Endereço"}</h4>
+
+            <div>
+              <strong>País:</strong> {address.pais}
+            </div>
+
+            <div>
+              <strong>Estado:</strong> {address.estado}
+            </div>
+
+            <div>
+              <strong>Cidade:</strong> {address.cidade}
+            </div>
+
+            <div>
+              <strong>Bairro:</strong> {address.bairro}
+            </div>
+
+            <div>
+              <strong>Rua:</strong> {address.rua}
+            </div>
+
+            <div>
+              <strong>Número:</strong> {address.numero}
+            </div>
+
+            <div>
+              <strong>CEP:</strong> {address.cep}
+            </div>
+
+            <div>
+              <strong>Complemento:</strong> {address.complemento}
+            </div>
+
+
+            <div
+              style={{
+                marginTop: "15px",
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              <button onClick={() => onEditClick(address)}>
+                Editar
+              </button>
+
+              <button onClick={() => onDelete(address.id)}>
+                Deletar
+              </button>
+            </div>
+
+          </div>
+        ))
+      )}
+    </div>
+  );
 }

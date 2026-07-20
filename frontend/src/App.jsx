@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { addressService } from '../services/addressService.js';
 import AddressList from '../components/addressList.jsx';
@@ -10,7 +10,7 @@ export function App() {
   const queryClient = useQueryClient();
   const [currentScreen, setCurrentScreen] = useState('listar'); // Pode ser: 'listar', 'criar', 'editar' 
   const [addressEdit, setAddressEdit] = useState(null);
-
+  
   const [searchTerm, setSearchTerm] = useState('');
 
   const [page, setPage] = useState(1);
