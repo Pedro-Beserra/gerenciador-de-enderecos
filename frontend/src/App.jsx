@@ -96,14 +96,14 @@ export function App() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h1>Gerenciador de Endereços</h1>
+    <div className='flex h-screen bg-blue-400 items-center justify-center flex-col gap-3'>
+      <h1 className='text-white text-2xl font-bold'>Gerenciador de Endereços</h1>
 
       {/* Condicional para alternar o que é exibido na tela */}
       {currentScreen === 'listar' && (
         <>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: "15px", flexDirection: 'column' }}>
-          <button onClick={() => { setAddressEdit(null); setCurrentScreen('criar'); }} style={{ marginBottom: "15px", width: '200px', height: '40px' }}>
+        <div className='flex flex-col justify-center gap-3 '>
+          <button onClick={() => { setAddressEdit(null); setCurrentScreen('criar'); }} className="text-white rounded-2xl bg-blue-500 px-2 py-1 hover:bg-blue-600">
             + Adicionar Novo Endereço
           </button>
 
@@ -112,7 +112,7 @@ export function App() {
           placeholder='Busca por cidade, bairro, rua...'
           value={searchTerm}
           onChange={handleSearchChange}
-          style={{ padding: "6px", flex: 1, borderRadius: "4px", border: "1px solid #ccc" }}
+          className='border rounded-2xl py-2 px-5 w-2xs text-white font-bold'
           />
           </div>
 
@@ -125,21 +125,21 @@ export function App() {
             />
 
             {totalRecords > 0 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
+                <div className='flex space-x-4 items-center '>
                   <button 
                     onClick={() => setPage(old => Math.max(old - 1, 1))} 
                     disabled={page === 1}
-                    style={{ padding: "8px 16px", cursor: page === 1 ? "not-allowed" : "pointer" }}
+                    className="text-white rounded-2xl bg-blue-500 px-2 py-1 hover:bg-blue-600"
                   >
                     Anterior
                   </button>
                   
-                  <span>Página <b>{page}</b> (Total de {totalRecords} itens)</span>
-                  
+                  <span className='text-white text-[15px]'>Página <b>{page}</b> (Total de {totalRecords} itens)</span>
+                    
                   <button 
                     onClick={() => setPage(old => old + 1)} 
                     disabled={!nextPageExist}
-                    style={{ padding: "8px 16px", cursor: !nextPageExist ? "not-allowed" : "pointer" }}
+                    className="text-white rounded-2xl bg-blue-500 px-2 py-1 hover:bg-blue-600"
                   >
                     Próxima
                   </button>

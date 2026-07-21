@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Volta uma pasta (sai de src) e entra em components */
+@source "../components/**/*.{js,jsx}";
+
+/* Procura em todas as subpastas dentro de src */
+@source "./**/*.{js,jsx}";
