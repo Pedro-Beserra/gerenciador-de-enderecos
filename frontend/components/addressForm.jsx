@@ -22,24 +22,27 @@ export default function AddressForm({ onSave, addressExist, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ border: "1px solid #000", padding: "15px", margin: "15px 0" }}>
-      <h3>{addressExist ? 'Editar Endereço' : 'Novo Endereço'}</h3>
+    <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4 bg-blue-500 w-120 rounded-2xl p-6 shadow-lg'>
+      <h3 className='text-xl font-bold text-white mb-2'>{addressExist ? 'Editar Endereço' : 'Novo Endereço'}</h3>
+
+      <div className='flex flex-col gap-2 border border-white rounded-lg p-3 w-full'>
+        <input name="pais" placeholder="País" value={formData.pais} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="estado" placeholder="Estado" value={formData.estado} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="cidade" placeholder="Cidade" value={formData.cidade} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
       
-      <input name="pais" placeholder="País" value={formData.pais} onChange={handleChange} required /><br />
-      <input name="estado" placeholder="Estado" value={formData.estado} onChange={handleChange} required /><br />
-      <input name="cidade" placeholder="Cidade" value={formData.cidade} onChange={handleChange} required /><br />
-    
-      <input name="bairro" placeholder="Bairro" value={formData.bairro} onChange={handleChange} required /><br />
-      <input name="rua" placeholder="Rua" value={formData.rua} onChange={handleChange} required /><br />
-      <input name="numero" placeholder="Numero" value={formData.numero} onChange={handleChange} required /><br />
+        <input name="bairro" placeholder="Bairro" value={formData.bairro} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="rua" placeholder="Rua" value={formData.rua} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="numero" placeholder="Numero" value={formData.numero} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
 
-      <input name="cep" placeholder="CEP" value={formData.cep} onChange={handleChange} required /><br />
-      <input name="complemento" placeholder="Complemento" value={formData.complemento} onChange={handleChange} /><br />
-      <input name="apelido" placeholder="Apelido (Ex: Casa)" value={formData.apelido} onChange={handleChange} /><br />
+        <input name="cep" placeholder="CEP" value={formData.cep} onChange={handleChange} required className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="complemento" placeholder="Complemento" value={formData.complemento} onChange={handleChange} className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+        <input name="apelido" placeholder="Apelido (Ex: Casa)" value={formData.apelido} onChange={handleChange} className='border rounded-r-2xl text-white font-bold py-2 px-2' />
+      </div>
 
-      <button type="submit">{addressExist ? 'Atualizar' : 'Salvar'}</button>
-      <button type="button" onClick={onCancel} style={{ marginLeft: "10px" }}>Cancelar</button>
+      <div className='inline-flex'>
+        <button className="text-white rounded-2xl bg-blue-600 px-2 py-1 hover:bg-blue-700" type="submit">{addressExist ? 'Atualizar' : 'Salvar'}</button>
+        <button className="text-white rounded-2xl bg-blue-600 px-2 py-1 hover:bg-blue-700" type="button" onClick={onCancel} style={{ marginLeft: "10px" }}>Cancelar</button>
+      </div>
     </form>
   );
 }
-

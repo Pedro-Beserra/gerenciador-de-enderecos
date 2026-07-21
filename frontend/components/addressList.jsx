@@ -1,17 +1,9 @@
 import React from 'react';
-import './addressList.css';
 
 export default function AddressList({ addresses, onEditClick, onDelete }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "20px",
-      }}
-    >
-      <h3>Meus Endereços</h3>
+    <div className='flex flex-col items-center gap-3'>
+      <h3 className='text-white text-xl font-bold mb-2'>Meus Endereços</h3>
 
       {addresses.length === 0 ? (
         <p>Nenhum endereço encontrado.</p>
@@ -19,62 +11,52 @@ export default function AddressList({ addresses, onEditClick, onDelete }) {
         addresses.map((address) => (
           <div
             key={address.id}
-            style={{
-              width: "400px",
-              padding: "20px",
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-            }}
+            className='bg-blue-500 w-100 border border-white px-5 py-3 rounded-2xl'
           >
 
-            <h4>{address.apelido || "Endereço"}</h4>
+            <h4 className='text-lg font-bold text-white mb-2'>{address.apelido || "Endereço"}</h4>
 
-            <div>
-              <strong>País:</strong> {address.pais}
+            <div className='text-white'>
+              <strong className='text-white'>País:</strong> {address.pais}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>Estado:</strong> {address.estado}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>Cidade:</strong> {address.cidade}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>Bairro:</strong> {address.bairro}
-            </div>
+            </div >
 
-            <div>
+            <div className='text-white'>
               <strong>Rua:</strong> {address.rua}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>Número:</strong> {address.numero}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>CEP:</strong> {address.cep}
             </div>
 
-            <div>
+            <div className='text-white'>
               <strong>Complemento:</strong> {address.complemento}
             </div>
 
 
             <div
-              style={{
-                marginTop: "15px",
-                display: "flex",
-                gap: "10px",
-              }}
+            className='flex gap-2 py-2'
             >
-              <button onClick={() => onEditClick(address)}>
+              <button onClick={() => onEditClick(address)} className="text-white rounded-2xl bg-blue-600 px-2 py-1 hover:bg-blue-700">
                 Editar
               </button>
 
-              <button onClick={() => onDelete(address.id)}>
+              <button onClick={() => onDelete(address.id)} className="text-white rounded-2xl bg-blue-600 px-2 py-1 hover:bg-blue-700">
                 Deletar
               </button>
             </div>
